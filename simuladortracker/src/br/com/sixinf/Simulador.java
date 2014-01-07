@@ -25,7 +25,7 @@ public class Simulador {
 		boolean checksumok = SimuladorHelper.ChecksumNMEAVerify(stringNMEA);
 		System.out.println("Checksum ok? " + checksumok);*/
 		
-		while (true) {
+		//while (true) {
 			BufferedReader br = null;
 			try {
 				
@@ -33,14 +33,7 @@ public class Simulador {
 				br = new BufferedReader(new FileReader(f));
 				String str = null;
 				while ((str = br.readLine()) != null) {
-					/* número de série e a string completa da coordenada são simulados, verificar como o aparelho irá enviar e mudar
-					* Nossa string simulada será:
-					* [série] + mensagem
-					*/
-					String serie = "1234";
-					
-					str = serie+str;
-					
+										
 					System.out.println(str);
 					
 					OutputStream os = null;
@@ -48,7 +41,7 @@ public class Simulador {
 					try {
 						
 						// enviar via socket
-						Socket s = new Socket("localhost", 2828);
+						Socket s = new Socket("localhost", 52828);
 						os = s.getOutputStream();
 						os.write(str.getBytes());
 						s.close();
@@ -81,6 +74,6 @@ public class Simulador {
 			}
 		}
 		
-	}
+	//}
 
 }
